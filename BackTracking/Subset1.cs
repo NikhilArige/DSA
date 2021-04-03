@@ -28,7 +28,7 @@ class Solution {
             
             res.Add(A[i]);
             GetSubSets(A,result,res,i+1);
-            res.RemoveAt(res.Count - 1); //removing the item added//A[0] will be removed by the end of first loop and so on
+            res.RemoveAt(res.Count - 1); //removing the item added;A[0] will be removed by the end of first loop and so on
         }
         
          
