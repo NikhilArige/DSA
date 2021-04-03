@@ -11,7 +11,7 @@ class Solution {
         bool allNeg = true;
         for(int i=0;i<n;i++){
             if(A[i]>0){
-                allNeg = false; //Check if all are negative
+                allNeg = false;         //Check if all are negative
                 break;
             }
         }
