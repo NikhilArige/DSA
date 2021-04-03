@@ -1,9 +1,8 @@
-Given a collection of integers that might CONTAIN DUPLICATES, S, return all possible subsets.
-
-Note:
-Elements in a subset must be in non-descending order.
-The solution set must not contain duplicate subsets.
-The subsets must be sorted lexicographically.
+//Given a collection of integers that might CONTAIN DUPLICATES, S, return all possible subsets.
+//Note:
+//Elements in a subset must be in non-descending order.
+//The solution set must not contain duplicate subsets.
+//The subsets must be sorted lexicographically.
 
 class Solution {
     public List<List<int>> subsetsWithDup(List<int> A) {
