@@ -1,2 +1,2 @@
 # DSA
-Solutions of DSA problems in C#
+DSA Problems and Solutions in C#
