@@ -6,8 +6,7 @@ class Solution {
     public int solve(string A) {
         int n = A.Length;
         if(n==1 && A[0]==')'){return 0;}
-        Stack<char> st = new Stack<char>();
-        int cnt =0;
+        Stack<char> st = new Stack<char>(); 
         for(int i=0;i<n;i++){
            if(A[i]=='('){
                st.Push(A[i]);
@@ -16,10 +15,10 @@ class Solution {
                st.Pop();
            }
            else{
-               cnt++;           //if A is like '))'
+               return 0;                      //if A is like '))'
            }
         }
-        int res = (st.Count>0 || cnt > 0) ? 0 : 1;
+        int res = (st.Count>0) ? 0 : 1;
         return res;
     }
 }
