@@ -33,12 +33,12 @@ public class Solution {
      public void FindPermutation(int A,int B,ref string result){
          
          if(A==1){
-             result+=Convert.ToString(num[0]);  //Adding last remining digit
+             result+=Convert.ToString(num[0]);  //Adding last remaining digit
              return;
          }
          
          int index = B/fact[A-1];  //number of blocks to skip
-         if(B%fact[A-1]==0)  //We need to convert 1 based indexing to 0 based.So,decrese index by 1
+         if(B%fact[A-1]==0)  //We need to convert 1 based indexing to 0 based.So,decrease index by 1
            { index-=1;}
         result+=Convert.ToString(num[index]);  //Adding new character
         num.RemoveAt(index);    //Removing digit after using
