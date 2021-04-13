@@ -12,3 +12,20 @@ public class Solution {
         return count;
     }
 } 
+	
+//or
+	
+public class Solution {
+    public int numSetBits(long n) {
+         
+       int count = 0; 
+        while (n > 0) {
+            n &= (n - 1);
+            count++;
+        } 
+        return count;
+    }
+}
+
+	
+	
