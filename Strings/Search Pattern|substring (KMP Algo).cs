@@ -2,6 +2,7 @@
 
 
 class Solution {
+    //A=pattern, B=string
     public int strStr(string B, string A) {
         //longest proper prefix which is also suffix
         int[] lps = new int[A.Length];
