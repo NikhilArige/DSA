@@ -15,7 +15,7 @@ public class Solution {
         if(grid == null || grid.Length == 0){
             return 0;
         }
-        //not as such in c#
+        //as its array of arrays, not multi dimensional matrix
         int rows = grid.Length;
         int columns = grid[0].Length;
         bool[,] check = new bool[rows,columns];
