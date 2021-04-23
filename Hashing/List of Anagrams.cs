@@ -21,9 +21,7 @@ class Solution {
          for(int i=0;i<A.Count;i++){
             //sorting elements in string or we can change string to chararray and sort
             //string val = String.Concat(A[i].OrderBy(c => c)); 
-            //Here the above one
-            
-            was not working, so used char[] instead
+            //Here the above one was not working, so used char[] instead
             char[] ch = A[i].ToCharArray();
             Array.Sort(ch);
             string val = new string(ch);
