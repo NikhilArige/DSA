@@ -22,9 +22,9 @@ public class Heap
 	
 		private int GetParent(int index){
 			if (index <= 0)
-            {
-                return -1;
-            }
+                {
+                       return -1;
+                }
 			return (index-1)/2;
 		}
 		
@@ -37,7 +37,7 @@ public class Heap
 				return (2*index) + 1;
 		}
 	
-	    private int GetRightChild(int index){
+	        private int GetRightChild(int index){
 			return (2*index) + 2;
 		}
 		
@@ -101,7 +101,7 @@ public class Heap
             {
                 smallest = left;
             }
-															//comparing with latest as we need to take min of left and right
+					        //comparing with latest as we need to take min of left and right
             if (right < currentsize && heaparray[right]<heaparray[smallest])
             {
                 smallest = right;
