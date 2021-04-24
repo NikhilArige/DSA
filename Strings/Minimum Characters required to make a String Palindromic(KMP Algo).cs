@@ -56,3 +56,33 @@ Output 2:
          
      }  
 }
+
+//Another Approach
+class Solution {
+    public int solve(string A) {     
+       int end=A.Length-1;
+        bool ismatch=false;
+        int i=0,j=A.Length-1;
+        while(i<j){
+            if(A[i]==A[j]){
+                i++;
+                j--;
+                ismatch=true;
+            }
+            else{
+                if(ismatch){
+                //moving left to left most when mismatch and decreasing j
+                i=0; 
+                ismatch=false;
+                }
+                else{
+                    j--;
+                }
+             end=j;
+            }  
+            
+        }
+        return A.Length-1-end;
+    }
+}
+ 
