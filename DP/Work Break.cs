@@ -42,3 +42,38 @@ class Solution {
     }
 }
 
+//Another approach
+class Solution {
+    public int wordBreak(string A, List<string> B) {
+        
+        int n = A.Length;
+        
+        HashSet<string> hash = new HashSet<string>();
+        foreach(var item in B){
+            hash.Add(item);
+        }
+        
+        int[] dp = new int[n]; //stores count of ways 
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){ 
+              string prefix = A.Substring(j,i-j+1);
+              if(hash.Contains(prefix)){ 
+                  if(j>0){
+                      dp[i] = dp[j-1];
+                  }
+                  else{
+                      dp[i]+=1;
+                  }  
+              } 
+            } 
+        } 
+        
+       if(dp[n-1]>0){
+           return 1;
+       } 
+       else{
+           return 0;
+       }
+    }
+}
