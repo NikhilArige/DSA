@@ -1,4 +1,4 @@
-Given an integer array A and two integers B and C.
+/*Given an integer array A and two integers B and C.
 You need to find the number of subarrays in which the number of occurrences of B is equal to number of occurrences of C.
 NOTE: Don't count empty subarrays.
 Example Input
