@@ -32,7 +32,7 @@ class Solution {
         result.Add(new List<int>(res));
         return;
         } 
-        for(int i= 1;i<=A;i++){ 
+        for(int i= start;i<=A;i++){ 
             res.Add(i); 
             GetSubSets(A,result,res,i+1,B-1);
             res.RemoveAt(res.Count - 1); 
