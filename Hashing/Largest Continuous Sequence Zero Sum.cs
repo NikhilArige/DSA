@@ -44,3 +44,22 @@ class Solution {
         return res;
     }
 }
+
+//count of sub arrays with sum 0
+       int sum=0;
+        int count = 0;
+        var set =  new Dictionary<int,int>();
+        set.Add(0,1);
+        for(int i=0;i<A.Length;i++){
+            sum+=A[i];
+            if(set.ContainsKey(sum)){
+               count+=set[sum]; 
+               set[sum]++;
+            } 
+            else{
+                set.Add(sum,1);
+            } 
+        }
+        return count; 
+
+ 
