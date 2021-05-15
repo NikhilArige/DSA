@@ -45,7 +45,7 @@ The only half node present in the tree is 3 so we will remove this node. */
  * }
  */
 class Solution {
-    //using preorder traversal
+    //using postorder traversal
     public TreeNode solve(TreeNode node) {
         if (node == null)
         {
