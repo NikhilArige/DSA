@@ -27,10 +27,11 @@ Explanation 2:
                 s++;
             }
             if(s==1){
-                mx=i+1;
+                mx=i+1;         //for the firsttime
             }
             if(dic.ContainsKey(s-1)){
-                mx=Math.Max(mx,i-dic[s-1]);
+                mx=Math.Max(mx,i-dic[s-1]);    //reason for (s-1), ex:consider current sum =5 and there exists s-1 i.e., 5-1=4 in dictionary,
+                                               //this means 5-4=1 i.e., present ones are greater than 0s
             }
             if(!dic.ContainsKey(s)){
                dic.Add(s,i); 
