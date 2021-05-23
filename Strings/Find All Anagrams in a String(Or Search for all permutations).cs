@@ -56,4 +56,49 @@ public class Solution {
         return true;
     }
 }
+
+//better one
+public class Solution {
+    public IList<int> FindAnagrams(string s, string p) {
+        
+        var pcount = new int[26];
+        var scount = new int[26];
+        var result = new List<int>();
+        int m = p.Length;
+        int n = s.Length;
+        if(m>n){
+            return result;
+        }
+        for(int i=0;i<m;i++){
+            pcount[p[i]-'a']++;
+            scount[s[i]-'a']++;
+        } 
+        for(int i=m;i<n;i++){
+           if(compare(pcount,scount)){
+               result.Add(i-m);
+           }
+            
+        scount[s[i]-'a']++; 
+        // Removing the first character of previous window
+        scount[s[i-m]-'a']--;
+        } 
+         if (compare(pcount,scount))
+        {
+            //for last window
+            result.Add(n-m);
+        }
+        return result;
+    }
+    
+    private bool compare(int[] a,int[] b){
+        
+        for(int i = 0;i<26;i++){
+            
+            if(a[i]!=b[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
  
