@@ -40,7 +40,7 @@
                 cnt++;
                 i++;
             }
-            else if(a[i] >=b[j]){                                //incresing count when overlapped and vice versa
+            else if(a[i] >=b[j]){                                //increasing count when overlapped and vice versa
                 cnt--;
                 j++;
             } 
