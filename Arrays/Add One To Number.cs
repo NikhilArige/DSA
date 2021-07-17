@@ -32,13 +32,9 @@ class Solution {
             {
                 array.Insert(0,1);
             }
-  
-          for(int i=0;i<array.Count;i++){
+   
               if(array[0]==0){
                    array.RemoveAt(0);    //removing 0s at beginning 
-              }
-              else{
-                break;
               } 
           } 
         return array;
