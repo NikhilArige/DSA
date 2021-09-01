@@ -49,3 +49,40 @@ class Solution {
          return A.Substring(start,max);
     }
 }
+
+
+public class Solution {
+    public string LongestPalindrome(string s) {
+        int n = s.Length;
+        if(n<2){
+            return s;
+        }
+        (int start, int end) max = (0, 0);
+        for(int i=0;i<n-1;i++){
+            if (s[i] == s[i + 1])
+                {
+                    var res = LongestPalindrome(s, i, i + 1);
+                    max = res.end - res.start > max.end - max.start ? res : max;
+                }
+
+                if (i + 2 < s.Length && s[i] == s[i + 2])
+                {
+                    var res = LongestPalindrome(s, i, i + 2);
+                    max = res.end - res.start > max.end - max.start ? res : max;
+                }
+        }
+        return (max.start == 0 && max.end == 0) ? 
+                s[0].ToString() : s.Substring(max.start, max.end - max.start + 1);       
+    }
+    
+    private (int start, int end) LongestPalindrome(string s, int start, int end)
+        { 
+            while (start >= 0 && end < s.Length && s[start] == s[end])
+            {
+                start--;
+                end++;
+            }
+
+            return (start + 1, end - 1);
+        }
+}
