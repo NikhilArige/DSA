@@ -74,8 +74,14 @@ class Solution {
     }
 }
 
-
-
+//O(n) 
+public class Solution {
+    public int MissingNumber(int[] nums) {
+        int n = nums.Length;
+        int sum = (n*(n+1))/2;
+        return sum - nums.Sum();
+    }
+}
 
 
 
