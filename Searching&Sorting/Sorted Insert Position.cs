@@ -41,3 +41,37 @@ public class Solution {
 	    return l;
 	}
 }
+
+
+
+public class Solution {
+    public int SearchInsert(int[] A, int B) {
+        if(A[0]>B){
+            return 0;
+        }
+        if(A[A.Length-1]<B){
+            return A.Length;
+        }
+        return BS(A,0,A.Length-1,B);
+    }
+    
+    int BS(int[] A,int l,int r,int B){
+        int result = -1;
+        while(l<=r){
+            int mid = (l+r)/2;
+             if(A[mid]==B){
+                 result = mid;
+                 break;
+             }
+            else if(A[mid]<B){
+                result = mid+1;
+                l = mid+1;
+            }
+            else{
+                result = mid;
+                r = mid-1;
+            }
+        }
+        return result;
+    }
+}
