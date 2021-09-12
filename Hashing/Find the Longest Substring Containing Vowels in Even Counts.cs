@@ -21,6 +21,42 @@ public class Solution {
             int res = 0;
             var vowels = new HashSet<char>() { 'a', 'e', 'i', 'o', 'u' };
             
+            var val = new Dictionary<char, int>()
+            {
+                {'a', 1},
+                {'e', 2},
+                {'i', 4},
+                {'o', 8},
+                {'u', 16}
+            }; 
+        
+             var maskPosition = new Dictionary<int, int>();
+             int mask = 0;
+             maskPosition[0] = -1;
+
+        for(int i=0;i<s.Length;i++){
+            if (vowels.Contains(s[i]))
+            {
+                mask ^= val[s[i]];
+            }
+            if (!maskPosition.ContainsKey(mask)) { 
+               maskPosition[mask] = i;
+            }
+            res = Math.Max(res, i - maskPosition[mask]);
+        }
+        
+        return res;
+    }
+}
+
+
+//getting TLE for this
+public class Solution {
+    public int FindTheLongestSubstring(string s) {
+        
+            int res = 0;
+            var vowels = new HashSet<char>() { 'a', 'e', 'i', 'o', 'u' };
+            
             var count = new Dictionary<char, int>()
             {
                 {'a', 0},
