@@ -44,6 +44,23 @@ class Solution {
     }
 }
 
-
+public class Solution {
+    public int MaxProduct(int[] A) {
+        int n =  A.Length;
+        if(n==1){
+            return A[0];
         }
-
+        int maxprod = A[0];
+        int minprod = A[0];
+        int res  = A[0];
+        int choice1,choice2;
+        for(int i=1;i<n;i++){
+            choice1 = maxprod*A[i];
+            choice2 = minprod*A[i]; 
+            maxprod = Math.Max(A[i],Math.Max(choice1,choice2));
+            minprod = Math.Min(A[i],Math.Min(choice1,choice2));
+            res = Math.Max(res,maxprod);
+        }
+        return res;
+    }
+}
