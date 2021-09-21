@@ -44,3 +44,56 @@ public class Solution {
  * Solution i = new Solution(root);
  * while (i.hasNext()) Console.WriteLine(i.next());
  */
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left;
+ *     public TreeNode right;
+ *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+public class BSTIterator {
+    
+    readonly List<int> list;
+    int i = 0;
+    public BSTIterator(TreeNode root) {
+        list = new List<int>();
+        IO(root);
+    }
+    
+    void IO(TreeNode root){
+        if(root.left!=null){
+            IO(root.left);
+        }
+        
+        list.Add(root.val);
+        if(root.right!=null){
+            IO(root.right);
+        }
+    }
+    
+    public int Next() {
+        return list[i++];
+    }
+    
+    public bool HasNext() {
+        return i< list.Count ;
+    }
+}
+
+/**
+ * Your BSTIterator object will be instantiated and called as such:
+ * BSTIterator obj = new BSTIterator(root);
+ * int param_1 = obj.Next();
+ * bool param_2 = obj.HasNext();
+ */
+
+
+
