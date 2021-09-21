@@ -77,3 +77,24 @@ class Solution {
        }
     }
 }
+
+public class Solution {
+    public bool WordBreak(string s, IList<string> wordDict) {
+            var set = new HashSet<string>(wordDict);
+        int n = s.Length;
+            bool[] dp = new bool[n + 1];
+            dp[0] = true;
+
+            for (int len = 1; len <= n; len++)
+            {
+                for (int i = 0; i < len; i++)
+                {
+                    if (dp[i] && set.Contains(s.Substring(i, len -i)))
+                    {
+                        dp[len] = true; break;
+                    }
+                }
+            }
+            return dp[n];
+    }
+}
