@@ -86,3 +86,45 @@ class Solution {
     
     } 
 }
+
+
+public class Solution {
+    public bool CanFinish(int numCourses, int[][] prerequisites) {
+        
+        var map = new Dictionary<int,List<int>>();
+        for(int i=0;i<numCourses;i++){
+            map.Add(i,new List<int>());
+        }
+        for(int i=0;i<prerequisites.Length;i++){
+            map[prerequisites[i][0]].Add(prerequisites[i][1]);
+        }
+        
+        int[] visited = new int[numCourses];
+        // 0 not visited || 1 visited & in-Stack || -1 visited and out of Stack
+        foreach(var kvp in map){
+            if(visited[kvp.Key]==0){
+                if(DetectCycleUsingDFS(map, kvp.Key, visited)){
+                     return false;
+                }
+            }
+        }
+            
+        return true;
+        
+    }
+    
+    bool DetectCycleUsingDFS(Dictionary<int,List<int>> map, int start, int[] visited)
+    {
+        visited[start]=1;   // 1 visited & in-Stack
+        
+        foreach(var adjacentVertex in map[start])
+            // 0 not visited, cheeck for cycle
+            if(visited[adjacentVertex]==0 && DetectCycleUsingDFS(map,adjacentVertex, visited))
+                return true;
+            // cycle found return true
+            else if(visited[adjacentVertex]==1)
+                return true;
+        visited[start]=-1;//-1 visited and out of Stack
+        return false;
+    }
+}
