@@ -121,3 +121,43 @@ public class main
 	}
 }
  
+
+
+
+
+
+public class MinStack {
+
+    Stack<int> st,minSt;
+    /** initialize your data structure here. */
+    public MinStack() {
+        st = new Stack<int>();
+        minSt = new Stack<int>();
+    }
+    
+    public void Push(int x) {
+        st.Push(x);                             // push to main stack
+        if(minSt.Count==0 || minSt.Peek()>x)
+            minSt.Push(x);
+        else
+            minSt.Push(minSt.Peek());
+    }
+    
+    public void Pop() {
+        st.Pop();
+        minSt.Pop();
+    }
+    
+    public int Top() => st.Peek();
+    
+    public int GetMin() => minSt.Peek();
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.Push(val);
+ * obj.Pop();
+ * int param_3 = obj.Top();
+ * int param_4 = obj.GetMin();
+ */
