@@ -56,4 +56,47 @@ public class Solution {
     }
 }
 
+public class Solution {
+    public void SetZeroes(int[][] mat) {
+        
+        var r = mat.Length;
+        var c = mat[0].Length;
+        
+        bool firstColZero = false;
+        
+        for(int i=0;i<r;i++){
+            if(mat[i][0]==0){
+                firstColZero = true;
+            }
+            for(int j=1;j<c;j++){
+                if(mat[i][j]==0){
+                    mat[0][j]=mat[i][0] = 0;
+                }
+            }
+        }
+        
+        for(int i=1;i<r;i++){ 
+            for(int j=1;j<c;j++){
+                if(mat[0][j]==0 || mat[i][0]==0){
+                    mat[i][j]= 0;
+                }
+            }
+        }
+        
+        if(mat[0][0]==0){
+            for(int i=0;i<c;i++){
+                mat[0][i]=0;
+            }
+        }
+            
+        if(firstColZero){
+            for(int i=0;i<r;i++){
+                mat[i][0]=0;
+            }
+        }        
+         
+        
+    }
+}
+
 //or we can take two arrays/hashsets to store respective 0s and fill matrix values to 0 based on them
