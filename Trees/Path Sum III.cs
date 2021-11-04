@@ -23,6 +23,8 @@ Output: 3
  *     }
  * }
  */
+
+//O(n^2)
 public class Solution {
     public int PathSum(TreeNode root, int sum) {
         if(root==null){
@@ -38,4 +40,41 @@ public class Solution {
         sum-=root.val;
         return ((sum == 0) ? 1 : 0) + IsMatchingSum(root.left, sum) + IsMatchingSum(root.right, sum);
     }  
+}
+
+public class Solution {
+    private int result = 0;
+    private Dictionary<int, int> sumFrequency = new Dictionary<int, int>();  
+    
+    public int PathSum(TreeNode root, int targetSum) {
+        sumFrequency[0] = 1;        
+        Search(root, targetSum, 0);        
+        return result;
+    }
+    
+    public void Search(TreeNode node, int targetSum, int currentSum) {
+        if (node == null) {
+            return;
+        }
+        
+        // Determine the current sum
+        currentSum = currentSum + node.val;
+        
+        // Get the path prefix sum
+        var prefixSum = currentSum - targetSum;
+        
+        if (sumFrequency.ContainsKey(prefixSum)) {
+            result += sumFrequency[prefixSum];
+        }
+        
+        // Increment the number of times this prefix has been seen
+        sumFrequency[currentSum] = (sumFrequency.ContainsKey(currentSum) ? sumFrequency[currentSum] : 0) + 1;
+        
+        // Keep exploring along branches finding the target sum
+        Search(node.left, targetSum, currentSum);
+        Search(node.right, targetSum, currentSum);    
+        
+        // Remove value of this prefixSum (path's been explored)
+        --sumFrequency[currentSum];
+    }      
 }
