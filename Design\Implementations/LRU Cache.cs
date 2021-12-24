@@ -126,3 +126,71 @@ public class LRUImplementation{
 		}
 }
 
+
+
+public class LRUCache {
+
+    Dictionary<int,LinkedListNode<int>> map;
+    LinkedList<int> list;
+    int capacity;
+    
+    public LRUCache(int _capacity) {
+        map = new Dictionary<int,LinkedListNode<int>>(_capacity);
+        list = new LinkedList<int>();
+        capacity = _capacity;
+    }
+    
+    public int Get(int key) {
+        
+        if(!map.ContainsKey(key)){
+            return -1;
+        }
+        else
+        {
+            var node = map[key];
+            if(node.List == null){
+                map.Remove(key);
+                return -1;
+            }
+            list.Remove(node);
+            list.AddFirst(node);
+            return node.Value;
+        }
+    }
+    
+    public void Put(int key, int value) {
+        
+        if(map.ContainsKey(key)){
+            
+           var node = map[key];
+            if (node.List != null) {
+                node.Value = value;
+                list.Remove(node);
+                list.AddFirst(node);
+                return;
+            }
+            else{
+                map.Remove(key);
+            }
+            
+         }
+         if(list.Count==capacity){
+             list.RemoveLast();
+         }
+        var newnode = new LinkedListNode<int>(value);
+        list.AddFirst(newnode);
+        map.Add(key,newnode);
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.Get(key);
+ * obj.Put(key,value);
+ */
+
+
+
+
+
