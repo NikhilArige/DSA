@@ -45,8 +45,7 @@ public class Solution {
                 op = ch;
                 num = 0;
             }
-        }
-        stack.Push(num);//for last one
+        } 
         return stack.Sum();
     }
 }
