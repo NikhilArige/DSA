@@ -56,3 +56,32 @@ public class Solution {
         return 1+getDepth(root.left);
     }
 }
+
+
+
+public class Solution {
+    public int CountNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        // If height of left and right tree are same, left tree must be full tree
+        int leftHeight = GetHeight(root.left);
+        
+        // If height of left and right are different, right tree must be full tree
+        int rightHeight = GetHeight(root.right);
+        
+        if (leftHeight == rightHeight) {
+            return (int)Math.Pow(2, leftHeight) + CountNodes(root.right);
+        } else {
+            return (int)Math.Pow(2, rightHeight) + CountNodes(root.left);
+        }
+    }
+    
+    private int GetHeight(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }        
+        return 1 + GetHeight(node.left);
+    }
+}
