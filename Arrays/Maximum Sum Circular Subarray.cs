@@ -61,3 +61,35 @@ public class Solution {
         return cur;
     }
 }
+
+
+public class Solution {
+    public int MaxSubarraySumCircular(int[] A) {
+       if(A.Length == 0) return 0;
+        int sum = A[0];
+        int maxSoFar = A[0];
+        int maxTotal = A[0];
+        int minTotal = A[0];
+        int minSoFar = A[0];
+        for(int i = 1; i < A.Length; i++){
+            int num = A[i];
+            maxSoFar = Math.Max(num, maxSoFar + num);
+            maxTotal = Math.Max(maxSoFar, maxTotal);
+            
+            minSoFar = Math.Min(num, minSoFar + num);
+            minTotal = Math.Min(minTotal, minSoFar);
+            
+            sum += num;
+        }
+        if(sum == minTotal) return maxTotal;
+        return Math.Max(sum - minTotal, maxTotal); 
+        
+    }
+}
+
+
+
+
+
+
+
