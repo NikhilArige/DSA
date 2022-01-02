@@ -23,6 +23,7 @@ Constraints:
 
 public int DeleteAndEarn(int[] nums) 
 {
+	//similar to house robber problem
 	int[] count = new int[10001];
 
 	foreach(var num in nums)
