@@ -21,10 +21,10 @@ public class Solution {
         int cnt = 0;
         var arr = new int[60];
         
-         for(int i=0;i<time.Length;i++){
-             
-             cnt += arr[(60-(time[i] % 60))%60];
-             arr[time[i] % 60]++;   
+         for(int i=0;i<time.Length;i++){ 
+             var mod = time[i] % 60; 
+             cnt += arr[(mod == 0)? 0 : 60-mod];  
+             arr[mod]++;   
         }
         
         
