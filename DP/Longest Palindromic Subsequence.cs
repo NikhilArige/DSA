@@ -32,5 +32,36 @@ class Solution {
 // Take indices, string of length 1,length 2 and so on.. in matrix
 
 
+public class Solution {
+    public int LongestPalindromeSubseq(string s) {
+        
+        var n = s.Length;
+        var dp = new int[n,n];
+        for(int l=0;l<n;l++)
+        {
+            for(int i=0,j=l;j<n;j++,i++)
+            {
+                if(l==0)
+                {
+                    dp[i,j] = 1;
+                }
+                else if(l==1 && s[i]==s[j])
+                {
+                    dp[i,j] = 2;
+                }
+                else if(s[i]==s[j])
+                {
+                    dp[i,j] = 2+ dp[i+1,j-1];
+                }
+                else
+                {
+                    dp[i,j] = Math.Max(dp[i,j-1],dp[i+1,j]);
+                }
+            }
+        }
+        return dp[0,n-1];
+    }
+}
+
 
 
