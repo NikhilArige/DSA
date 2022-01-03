@@ -14,7 +14,30 @@ Explanation 2:
     Day 1 : Buy
     Day 3 : Sell */
     
+
+
+public class Solution {
+    public int MaxProfit(int[] prices) {
+        
+        var oneBuy = int.MaxValue;
+        var oneBuyAndSell = 0;
+        var twoBuy = int.MaxValue;
+        var twoBuyAndSell = 0;
+        for(int i=0;i<prices.Length;i++)
+        {
+            var curPrice = prices[i];
+            oneBuy = Math.Min(oneBuy,curPrice);
+            oneBuyAndSell = Math.Max(oneBuyAndSell,curPrice-oneBuy);
+            twoBuy = Math.Min(twoBuy, curPrice - oneBuyAndSell);
+            twoBuyAndSell = Math.Max(twoBuyAndSell, curPrice - twoBuy); 
+        }
+        return twoBuyAndSell;
+    }
+}
     
+
+
+
     class Solution {
     public int maxProfit(List<int> price) {
         
