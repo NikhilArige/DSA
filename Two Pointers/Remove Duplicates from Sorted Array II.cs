@@ -37,3 +37,38 @@ public class Solution {
         A[j] = temp; 
     }
 }
+
+
+//simplest
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+        
+        int i = 0;
+        int n = nums.Length;
+        
+        foreach(var num in nums){
+            if((i<2) || (num>nums[i-2])){
+                nums[i++] = num;
+            }
+        }
+        return i;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
