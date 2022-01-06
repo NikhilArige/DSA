@@ -23,3 +23,35 @@ class Solution {
     return ones; 
     }
 }
+
+
+ public class Solution
+    {
+        public int SingleNumber(int[] nums)
+        {
+            int[] bitsCount = new int[32];
+
+            foreach (var num in nums)
+            {
+                for (int i = 0; i < 32; i++)
+                {
+                    if((num & (1 << i)) != 0)
+                    {
+                        bitsCount[i]++;
+                    }
+                }
+            }
+
+            int res = 0;
+
+            for (int i = 0; i < 32; i++)
+            {
+                if ((bitsCount[i] % 3) == 1)
+                {
+                    res = res | (1 << i);
+                }
+            }
+
+            return res;
+        }
+    }
