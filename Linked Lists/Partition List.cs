@@ -59,4 +59,40 @@ class Solution {
     }
 }
 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode Partition(ListNode head, int x) {
+        
+        var smallHead = new ListNode();
+        var bigHead = new ListNode();
+        var small = smallHead;
+        var big = bigHead;
+        while(head!=null){
+            
+            if(head.val < x){
+                small.next = head;
+                small = small.next;
+            }
+            else{
+                big.next = head;
+                big = big.next;
+            }
+            head = head.next;
+        }
+        big.next = null;
+        small.next = bigHead.next;
+        return smallHead.next;
+    }
+}
+
 //or take two emmpty nodes , keep on adding smaller and greater elements, merge them and return
