@@ -30,3 +30,16 @@ public class Solution {
 	    A[j] = temp; 
 	}
 }
+
+//simpler one
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+        int i = 0;
+        foreach(var num in nums){
+            if((i<1)||(num>nums[i-1])){
+                nums[i++] = num;
+            }
+        }
+        return i;
+    }
+}
