@@ -62,7 +62,7 @@ public class AllOne {
             count.Remove(curCount);
             }
             var newCount = curCount+1;
-            var newnode = new LinkedListNode<string>(key);
+            var newnode = new LinkedListNode<string>(key);  //no need of creating this, can update with prevNode itself
             nodes[key] = (newCount,newnode);
             if(!map.ContainsKey(newCount)){
                 map.Add(newCount,new LinkedList<string>());
