@@ -21,17 +21,16 @@ public class Solution {
             return 0;
         }
         var dp = new int[n,n];
-        for(int l=1;l<=n;l++){
-            for(int i=0;i<=n-l;i++){
-                
-                 int j = i + l - 1;
+        for(int l=0;l<n;l++){
+            for(int i=0,j=l;j<n;i++,j++){
+                 
                 for (int k = i; k <= j; k++)
-                {
-                    int leftSum = k - 1 < i ? 0 : dp[i, k - 1];
-                    int rightSum = k + 1 > j ? 0 : dp[k + 1, j];
+                { 
+                    int leftSum = i==k ? 0 : dp[i, k - 1];
+                    int rightSum = j==k ? 0 : dp[k + 1, j];
 
-                    int leftNum = i - 1 < 0 ? 1 : nums[i - 1];      
-                    int rtNum = j + 1 >= n ? 1 : nums[j + 1];        
+                    int leftNum = i == 0 ? 1 : nums[i - 1];      
+                    int rtNum = j == n-1 ? 1 : nums[j + 1];        
 
                     dp[i, j] = Math.Max(dp[i, j], leftSum + (leftNum * nums[k] * rtNum) + rightSum);
                 }
