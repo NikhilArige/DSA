@@ -38,7 +38,35 @@ public class Solution {
             }
             map.TryAdd(cur,i);
         }
+        return res == -1 ? -1 : nums.Length - res;
+    }
+}
+
+
+public class Solution {
+    public int MinOperations(int[] nums, int x) {
         
+        //find max subarray with total sum - x and return total length - subarraylength 
+        var subArraytotal = nums.Sum() - x;
+        if(subArraytotal < 0){
+            return -1;
+        }
+        if(subArraytotal == 0){
+            return nums.Length;
+        }
+        int res = -1;
+        int cur = 0;
+        int left = 0;
+        for(int i=0;i<nums.Length;i++){
+            
+            cur += nums[i];
+            while(cur > subArraytotal){
+                cur -= nums[left++];
+            }
+            if(cur == subArraytotal){
+                res = Math.Max(res,i-left+1);
+            }
+        }
         return res == -1 ? -1 : nums.Length - res;
     }
 }
