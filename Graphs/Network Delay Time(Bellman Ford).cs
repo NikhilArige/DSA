@@ -41,3 +41,53 @@ public class Solution {
         return max == int.MaxValue ? -1 : max;
     }
 }
+
+
+//Dijkstra
+public int NetworkDelayTime(int[][] times, int n, int k)
+    {
+        var graph = new Dictionary<int, List<Tuple<int, int>>>();
+        for (int i = 0; i < times.Length; i++)
+        {
+            if (graph.ContainsKey(times[i][0]))
+                graph[times[i][0]].Add(Tuple.Create(times[i][1], times[i][2]));
+            else
+                graph.Add(times[i][0], new List<Tuple<int, int>> { Tuple.Create(times[i][1], times[i][2]) });
+        }
+        
+        var result = new Dictionary<int, int>();
+        var priorityQueue = new SortedSet<Tuple<int, int>>();
+        priorityQueue.Add(Tuple.Create(0, k));
+        
+        while (priorityQueue.Count > 0)
+        {
+            var min = priorityQueue.Min;
+            var minTime = min.Item1;
+            var minNode = min.Item2;
+            priorityQueue.Remove(min);
+
+            if (result.ContainsKey(minNode))
+                continue;
+            
+            result.Add(minNode, minTime);
+            if (!graph.ContainsKey(minNode))
+                continue;
+            
+            var currTimes = graph[minNode];
+            foreach (var nodeTime in currTimes)
+            {
+                var node = nodeTime.Item1;
+                var time = nodeTime.Item2;
+                if (!result.ContainsKey(node))
+                    priorityQueue.Add(Tuple.Create(minTime + time, node));
+            }
+        }
+        
+        if (result.Count != n)
+            return -1;
+        
+        var max = 0;
+        foreach (var item in result)
+            max = Math.Max(max, item.Value);
+        return max;
+    }
