@@ -28,3 +28,18 @@ class Solution {
         return cnt;
     }
 }
+
+class Solution {
+    public int bulbs(List<int> A) { 
+        int n = A.Count;
+        bool flipped = false;
+        int res = 0;
+        for(int i=0;i<A.Count;i++){ 
+            if((A[i]==0 && !flipped)||(A[i]==1 && flipped)){
+                res++;
+                flipped = !flipped;
+            } 
+        }
+        return res;
+    }
+}
